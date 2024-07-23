@@ -1,0 +1,379 @@
+---
+title: "Installation"
+description: To start using the D., you need to install the required packages and configure your project.
+order: 2
+published: true
+---
+
+## Installation via CLI
+Before you run the command, make sure you have **tailwind installed**. If you don't, just see [here](https://tailwindcss.com/docs/installation) how to install it.
+
+<Note intent='primary'>
+  This command's gonna nuke your `tailwind config` and `css` file. So, run it in a **fresh project**, not in an **old one**. Otherwise, you'll have to manually add the needed files.
+</Note>
+
+Kick things off by running this command:
+
+<InstallCommand isInit />
+
+Next up, tell it your source. If you're rocking **Next.js**, pick Next.js. If **Laravel** with **Inertia.js** is your jam, go with Laravel. Not using either? Just hit up the **other** option.
+
+After that, just run `add [component-name]` to drop the component in your project. No need to install everything at once. Need a file-trigger? Just add it up. Even if it requires a button, this command's got you covered. Just install what you need now. Otherwise, hit up the docs and do it manually. Here's how to add a `combo-box`:
+
+<InstallCommand isInDocsComponent={false} isAdd items={['combo-box']} />
+
+This command will install all the required components like:
+```bash
+✓ combo-box created
+✓ select created
+✓ dropdown created
+✓ field created
+✓ list-box created
+✓ popover created
+✓ button created
+```
+
+If ya wanna drop in group components, check the docs, they bundle all the goodies into one namespace, like collections, overlays, forms, etc. So you can slap 'em in all at once like this:
+<InstallCommand isInDocsComponent={false} isAdd items={['overlays']} />
+With that command, you'll get all the components in the overlays namespace like this:
+```bash
+✓ button created
+✓ dialog created
+✓ modal created
+✓ sheet created
+✓ drawer created
+✓ popover created
+✓ tooltip created
+```
+
+Or you might wanna pick the components you wanna toss in. Just add 'em without any arguments. You'll get a list of components to select, using arrow keys and spacebar.
+<InstallCommand isInDocsComponent={false} isAdd items={['']} />
+
+The command above will show you list like this:
+```bash
+? Select components to add: (Press <space> to select, <a> to toggle all, <i> to invert selection, and <enter> to proceed)
+ ◯ dropdown
+ ◯ dialog
+ ◯ dynamic-overlay
+ ◯ field
+ ◯ forms
+ ◯ collections
+ ◯ date-and-time
+```
+
+Right now, the CLI can only drop one component at a time. So if you try `add note card`, it'll only add the `note` component. If you wanna upgrade it to handle multiple components, feel free to make a [PR](https://github.com/irsyadadl/justd-cli/).
+
+## React Server Component
+By default, the primitive gets dropped in the `components/ui` folder of your project. It packs all the must-have functions for your components, like `cn` for className and `composeTailwindRenderProps`. But heads up, you can't rock it in server components. So, if you wanna flex that `cn` class outside the built-in squad, you gotta whip up a file that only holds that function, like this:
+
+```ts title="utils/classes.ts"
+import { twMerge } from 'tailwind-merge'
+import { type ClassValue, clsx } from 'clsx'
+
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
+```
+
+If I were you, I'd stash this in a file named `classes.ts` in the `utils` folder. Then, whenever I need to roll with it, I'll import it like this:
+```tsx
+import { cn } from '@/utils/classes'
+
+export default function page() {
+  return (
+    <span className={cn('...')}/>
+  )
+}
+```
+
+## Manual Installation
+To get started with the design system, you gotta install these packages:
+
+<InstallCommand isInstall items={['react-aria-components', 'tailwindcss-react-aria-components']} />
+
+Next, grab Tailwind Variant, Tailwind Merge, and clsx for those sweet utility functions.
+
+<InstallCommand isInstall items={['tailwind-variants', 'tailwind-merge', 'clsx']} />
+
+Then, snag the animation package for handling animations and Paranoid for icons:
+<InstallCommand isInstall items={['@irsyadadl/paranoid', 'tailwindcss-animate', 'framer-motion']} />
+
+### CSS
+First up, tweak your root CSS file. For example, if you're rockin' Laravel, it's **resources/css/app.css**, and you gotta add this code:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Variables
+Below that, you gotta drop in the following code:
+<PlainCode lang='css' code={`@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --fg: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-header: 240 5% 99%;
+    --popover: 0 0% 100%;
+    --popover-fg: 240 10% 3.9%;
+
+    --primary: 216 98% 52%;
+    --primary-fg: 0 0% 100%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-fg: 240 5.9% 10%;
+
+    --tertiary: 240 4.8% 95.9%;
+    --tertiary-fg: 240 4% 16%;
+
+    --success: 152 69% 31%;
+    --success-fg: 0 0% 100%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-fg: 240 3.8% 46.1%;
+
+    --danger: 347 77% 50%;
+    --danger-fg: 356 100% 97%;
+
+    --warning: 46 97% 65%;
+    --warning-fg: 21 92% 14%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --toggle: 240 5% 84%;
+    --ring: 211 100% 58%;
+
+    --radius: 0.55rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --fg: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-header: 240 6% 6%;
+
+    --popover: 240 6% 6%;
+    --popover-fg: 0 0% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-fg: 0 0% 98%;
+
+    --tertiary: 240 10% 6%;
+    --tertiary-fg: 240 5% 96%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-fg: 240 5% 64.9%;
+
+    --border: 240 7% 15%;
+    --input: 240 3.7% 15.9%;
+    --toggle: 240 5% 26%;
+  }
+}
+`} />
+
+### Default Utilities
+Add this for the default set of utilities:
+<PlainCode lang='css' code={`@layer base {
+  * {
+    @apply border-border;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 850;
+  }
+
+  body {
+    @apply bg-background text-fg;
+  }
+}
+`} />
+
+### React Aria Components
+And finally, toss in this for react-aria-components:
+
+```css
+.react-aria-Button,
+.react-aria-Dialog { outline: none; }
+
+.react-aria-DropIndicator[data-drop-target] {
+  outline: 1px solid hsl(var(--primary));
+}
+```
+
+
+### Tailwind Configuration
+You need wrap your tailwind config with `withTV` from `tailwind-variants`, also you need to plug the plugins we've just installed.
+<PlainCode lang='js' code={`/** @type {import('tailwindcss').Config} */
+
+import { withTV } from 'tailwind-variants/transformer'
+import ta from 'tailwindcss-animate'
+import trac from 'tailwindcss-react-aria-components'
+
+export default withTV({
+  darkMode: 'class',
+  content: [...],
+
+  plugins: [ ta, trac ],
+  theme: {
+    extend: {
+      colors: {
+        border: 'hsl(var(--border))',
+        link: 'hsl(var(--link))',
+        input: 'hsl(var(--input))',
+        toggle: 'hsl(var(--toggle))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        fg: 'hsl(var(--fg))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          fg: 'hsl(var(--primary-fg))',
+          '50': '#eef8ff',
+          '100': '#d8eeff',
+          '200': '#b9e0ff',
+          '300': '#89cfff',
+          '400': '#52b4ff',
+          '500': '#2a91ff',
+          '600': '#0d6efd',
+          '700': '#0c5ae9',
+          '800': '#1149bc',
+          '900': '#144194',
+          '950': '#11295a'
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          fg: 'hsl(var(--secondary-fg))'
+        },
+        tertiary: {
+          DEFAULT: 'hsl(var(--tertiary))',
+          fg: 'hsl(var(--tertiary-fg))'
+        },
+        success: {
+          DEFAULT: 'hsl(var(--success))',
+          fg: 'hsl(var(--success-fg))'
+        },
+        danger: {
+          DEFAULT: 'hsl(var(--danger))',
+          fg: 'hsl(var(--danger-fg))'
+        },
+        warning: {
+          DEFAULT: 'hsl(var(--warning))',
+          fg: 'hsl(var(--warning-fg))'
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          fg: 'hsl(var(--muted-fg))'
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          fg: 'hsl(var(--popover-fg))'
+        },
+      },
+      borderRadius: {
+        xl: 'calc(var(--radius) + 2px)',
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)'
+      },
+    }
+  },
+})
+`} />
+
+### Primitive
+<SourceCode title='ui/primitive.tsx' toShow={['primitive']} />
+
+## Simple Import
+Yup, that's slick 'cause the index.ts file in your ui folder plays the connect-the-dots game. Even if button and badge are chillin' in different files, you can scoop them up in one go like this:
+```tsx
+import { Button, VisuallyHidden, Badge } from 'ui'
+```
+Aight, so here’s the lowdown: your ui folder’s rockin’ an index.ts file, right? This bad boy bundles up all your components for easy access. Just pull 'em in like this, no sweat!
+<PlainCode title="ui/index.ts" lang='tsx' code={`export * from './primitive';
+export * from './note';
+export * from './list-box';
+export * from './pagination';
+export * from './link';
+export * from './tabs';
+export * from './card';
+export * from './slider';
+export * from './popover';
+export * from './text-field';
+export * from './radio';
+export * from './date-field';
+export * from './date-picker';
+export * from './toaster';
+export * from './container';
+export * from './input-otp';
+export * from './tag-group';
+export * from './sheet';
+export * from './field';
+export * from './drop-zone';
+export * from './grid';
+export * from './meter';
+export * from './time-field';
+export * from './breadcrumbs';
+export * from './drawer';
+export * from './tooltip';
+export * from './file-trigger';
+export * from './heading';
+export * from './switch';
+export * from './calendar';
+export * from './grid-list';
+export * from './command';
+export * from './dropdown';
+export * from './avatar';
+export * from './combo-box';
+export * from './search-field';
+export * from './multi-select';
+export * from './dialog';
+export * from './menu';
+export * from './progress-bar';
+export * from './badge';
+export * from './toggle-button';
+export * from './snippet';
+export * from './number-field';
+export * from './table';
+export * from './separator';
+export * from './button';
+export * from './modal';
+export * from './checkbox';
+export * from './select';
+export * from './textarea';
+export * from './loading-dots';
+export * from './skeleton';
+export * from './form';
+export * from './carousel';
+export * from './aspect-ratio';
+export * from './color';
+export * from './color-picker';
+export * from './dynamic-overlay';
+export * from './visually-hidden';
+`} />
+
+If you ain’t usin’ all them bits, just ditch the ones you don’t need. Later on, when you got a fresh component, just slide it into the lineup. Easy peasy!
+
+### TS Config
+Then, you gotta drop this into your `tsconfig.json` file:
+```json title="tsconfig.json" {6}
+{
+  "compilerOptions": {
+    // ...
+    "paths": {
+      "@/*": ["./*"],
+      "ui": ["./components/ui"]
+    }
+  }
+}
+```
+### TS Config with src Folder
+Just make sure you're rockin' the paths property right when you got a src folder in your project. If you wanna mess with the ui folder, just line up your paths proper like this:
+
+```json title="tsconfig.json" {6}
+{
+  "compilerOptions": {
+    // ...
+    "paths": {
+      "@/*": ["./src/*"],
+      "ui": ["./src/components/ui"]
+    }
+  }
+}
+```
