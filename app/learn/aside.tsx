@@ -28,7 +28,7 @@ export const createHierarchy = (learn: Array<Learn>): HierarchyNode => {
   const hierarchy: HierarchyNode = {}
 
   sortLearn(learn).forEach((doc) => {
-    const parts = doc.slug.split('/').slice(1)
+    const parts = doc.slug.split('/').slice(4)
     let currentLevel = hierarchy
 
     parts.forEach((part, index) => {
