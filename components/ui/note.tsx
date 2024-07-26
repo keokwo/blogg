@@ -2,11 +2,11 @@
 
 import * as React from 'react'
 
+import { cn } from '@/lib/utils'
 import { IconCircleCheck, IconCircleInfo, IconTriangleInfo } from '@irsyadadl/paranoid'
 import { Text } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
-import { cn } from './primitive'
 
 const noteStyles = tv({
   base: [
@@ -46,7 +46,7 @@ const noteStyles = tv({
   }
 })
 
-interface NoteProps extends React.HtmlHTMLAttributes<HTMLDivElement>, VariantProps<typeof noteStyles> {}
+interface NoteProps extends React.HtmlHTMLAttributes<HTMLDivElement>, VariantProps<typeof noteStyles> { }
 
 const Note = ({ intent = 'secondary', className, ...props }: NoteProps) => {
   return (
@@ -70,3 +70,4 @@ const Note = ({ intent = 'secondary', className, ...props }: NoteProps) => {
 }
 
 export { Note, type NoteProps }
+

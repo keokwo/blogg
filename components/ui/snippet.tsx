@@ -2,12 +2,12 @@
 
 import * as React from 'react'
 
-import { cn } from '@/components/ui/primitive'
 import { IconCheck, IconDuplicate } from '@irsyadadl/paranoid'
 import { AnimatePresence, motion } from 'framer-motion'
 import { toast } from 'sonner'
 import { twMerge } from 'tailwind-merge'
 
+import { cn } from '@/lib/utils'
 import { Button, type ButtonProps } from './button'
 
 const snippetVariants = {
@@ -48,9 +48,6 @@ const Snippet: React.FC<SnippetProps> = ({ className, text, ...props }) => {
       <Button
         className="size-7 bx backdrop-blur-lg text-white bg-zinc-800 border hover:bg-zinc-700 border-zinc-700"
         aria-label="Copy imports statement"
-        size="square-petite"
-        appearance="outline"
-        onPress={handleCopy}
       >
         <AnimatePresence mode="wait" initial={false}>
           {copied ? (
@@ -91,8 +88,6 @@ const CopyButton = ({
         className
       )}
       aria-label={ariaLabel}
-      size="square-petite"
-      appearance="outline"
       {...props}
     >
       <AnimatePresence mode="wait" initial={false}>

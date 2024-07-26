@@ -1,15 +1,14 @@
 'use client'
 
+import { cn } from '@/lib/utils'
 import { IconChevronRight } from '@irsyadadl/paranoid'
 import type { BreadcrumbProps, BreadcrumbsProps } from 'react-aria-components'
 import {
   Breadcrumb as BreadcrumbPrimitive,
   Breadcrumbs as BreadcrumbsPrimitive,
+  Link,
   type LinkProps
 } from 'react-aria-components'
-
-import { Link } from './link'
-import { cn } from './primitive'
 
 function Breadcrumbs<T extends object>(props: BreadcrumbsProps<T>) {
   return <BreadcrumbsPrimitive {...props} className={cn('flex gap-1', props.className)} />

@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
-import { cn } from '@/components/ui/primitive'
 import { CopyButton } from '@/components/ui/snippet'
+import { cn } from '@/lib/utils'
 import { IconCircleInfo } from '@irsyadadl/paranoid'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@radix-ui/react-collapsible'
 import rehypePrettyCode from 'rehype-pretty-code'
@@ -83,7 +83,7 @@ function CodeExpandButton({ isOpened }: { isOpened: boolean }) {
       )}
     >
       <CollapsibleTrigger asChild>
-        <Button intent="secondary" size="small">
+        <Button>
           {isOpened ? 'Collapse' : 'Expand'}
         </Button>
       </CollapsibleTrigger>

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { MdVerified as VerifiedIcon } from 'react-icons/md';
 
+import { VerifiedIcon } from 'lucide-react';
 import Image from '../../elements/Image';
 
 interface ProfileHeaderProps {

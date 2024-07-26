@@ -1,12 +1,11 @@
 'use client'
 
-import * as React from 'react'
+import { cn } from '@/lib/utils'
 
 import type { ListBoxItemProps, ListBoxProps } from 'react-aria-components'
 import { ListBox, ListBoxItem } from 'react-aria-components'
 import { tv, type VariantProps } from 'tailwind-variants'
 
-import { cn } from './primitive'
 
 const gridStyles = tv(
   {
@@ -313,4 +312,5 @@ const GridItem = ({
   )
 }
 
-export { Grid, GridItem, gridStyles, gridItemStyles }
+export { Grid, GridItem, gridItemStyles, gridStyles }
+

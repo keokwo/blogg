@@ -1,7 +1,7 @@
 import { BiLeftArrowCircle as BackButton } from 'react-icons/bi';
 import Typewriter from 'typewriter-effect';
 
-import { MDXContent } from '@/components/elements/mdx-components';
+// import { MDXContent } from '@/components/elements/mdx-components';
 import { Button } from '@/components/ui/button';
 
 interface AiResponsesProps {
@@ -21,7 +21,8 @@ export default function AiResponses({
     <>
       {response ? (
         response?.includes('```') ? (
-          <MDXContent code={response} />
+          // <MDXContent code={response} />
+          { response }
         ) : (
           <Typewriter
             onInit={(typewriter) => {
@@ -64,12 +65,13 @@ export default function AiResponses({
       )}
 
       {isAiFinished && (
-        <div className='mt-6 flex justify-center transition-all duration-300'>
+        <div className='flex justify-center transition-all duration-300'>
           <Button
             onClick={onAiClose}
+            variant={'destructive'}
             data-umami-event='Click Back from AI Response'
           >
-            <BackButton />
+            <BackButton className="mr-2 h-4 w-4" />
             Back
           </Button>
         </div>

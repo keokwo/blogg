@@ -1,33 +1,31 @@
-'use client'
+"use client";
 
-import * as React from 'react'
+import * as SeparatorPrimitive from "@radix-ui/react-separator";
+import * as React from "react";
 
-import { Separator as SeparatorPrimitive, type SeparatorProps } from 'react-aria-components'
-import { tv } from 'tailwind-variants'
+import { cn } from "@/lib/utils";
 
-const separatorStyles = tv({
-  base: 'bg-muted forced-colors:bg-[ButtonBorder]',
-  variants: {
-    orientation: {
-      horizontal: 'h-px w-full',
-      vertical: 'w-px'
-    }
-  },
-  defaultVariants: {
-    orientation: 'horizontal'
-  }
-})
-
-export function Separator(props: SeparatorProps) {
-  return (
-    <SeparatorPrimitive
+const Separator = React.forwardRef<
+  React.ElementRef<typeof SeparatorPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
+>(
+  (
+    { className, orientation = "horizontal", decorative = true, ...props },
+    ref,
+  ) => (
+    <SeparatorPrimitive.Root
+      ref={ref}
+      decorative={decorative}
+      orientation={orientation}
+      className={cn(
+        "shrink-0 bg-border",
+        orientation === "horizontal" ? "h-px w-full" : "h-full w-px",
+        className,
+      )}
       {...props}
-      className={separatorStyles({
-        orientation: props.orientation,
-        className: props.className
-      })}
     />
-  )
-}
+  ),
+);
+Separator.displayName = SeparatorPrimitive.Root.displayName;
 
-export type { SeparatorProps }
+export { Separator };

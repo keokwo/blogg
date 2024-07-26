@@ -19,7 +19,7 @@ const linkStyles = tv({
   }
 })
 
-interface LinkProps extends LinkPrimitiveProps, VariantProps<typeof linkStyles> {}
+interface LinkProps extends LinkPrimitiveProps, VariantProps<typeof linkStyles> { }
 
 function Link({ className, intent, ...props }: LinkProps) {
   return (
@@ -33,3 +33,4 @@ function Link({ className, intent, ...props }: LinkProps) {
 }
 
 export { Link, LinkPrimitive, type LinkPrimitiveProps, type LinkProps }
+

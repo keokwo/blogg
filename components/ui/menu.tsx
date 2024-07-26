@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 
+import { cn } from '@/lib/utils'
 import { IconBulletFill, IconCheck, IconChevronLgRight } from '@irsyadadl/paranoid'
 import type {
   ButtonProps,
@@ -15,8 +16,8 @@ import {
   composeRenderProps,
   Header,
   Keyboard,
-  Menu as MenuPrimitive,
   MenuItem as MenuItemPrimitive,
+  Menu as MenuPrimitive,
   MenuTrigger as MenuTriggerPrimitive,
   OverlayArrow,
   Popover,
@@ -28,9 +29,7 @@ import {
 } from 'react-aria-components'
 import { twJoin } from 'tailwind-merge'
 import type { VariantProps } from 'tailwind-variants'
-
 import { dropdownItemStyles } from './dropdown'
-import { cn } from './primitive'
 
 const Menu = MenuTriggerPrimitive
 const MenuTrigger = ({ className, ...props }: ButtonProps) => (
@@ -212,3 +211,4 @@ export {
   SubmenuTrigger,
   type MenuItemProps
 }
+

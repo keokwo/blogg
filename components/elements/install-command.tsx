@@ -5,6 +5,7 @@ import { Link } from '../ui/link'
 import { Menu, MenuContent, MenuItem } from '../ui/menu'
 import { CopyButton } from '../ui/snippet'
 
+
 export interface InstallCommandProps {
   isAdd?: boolean
   isInstall?: boolean

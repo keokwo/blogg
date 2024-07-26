@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { FC } from 'react';
-
 import Navigation from './Navigation';
 
 const MobileMenu: FC = () => {

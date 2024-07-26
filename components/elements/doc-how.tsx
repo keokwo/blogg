@@ -7,7 +7,8 @@ import jsonPreviews from '@/components/docs/generated/previews.json'
 import { Code } from '@/components/docs/rehype/code'
 import { cn } from '@/lib/utils'
 import { IconLoader } from '@irsyadadl/paranoid'
-import { Tab, TabList, TabPanel, Tabs } from '../ui/tabs'
+import { Tab, TabList, TabPanel } from 'react-aria-components'
+import { Tabs } from '../ui/tabs'
 
 interface HowProps extends React.HTMLAttributes<HTMLDivElement> {
   toUse: string

@@ -1,3 +1,5 @@
+"use client"
+
 import { Combobox, Dialog, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { useTheme } from 'next-themes';

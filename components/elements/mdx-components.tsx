@@ -1,18 +1,17 @@
 import { PlainCode } from '@/components/docs/rehype/plain-code'
 import { SourceCode } from '@/components/docs/rehype/source-code'
-import { DocComposed } from '@/components/elements/doc-composed'
-import { DocNote } from '@/components/elements/doc-note'
-import type { DocSnippetProps } from '@/components/elements/doc-snippet'
-import { DocSnippet } from '@/components/elements/doc-snippet'
-import type { InstallCommandProps } from '@/components/elements/install-command'
-import { InstallCommand } from '@/components/elements/install-command'
 import Image from 'next/image'
 
 import { useMDXComponent } from '@/lib/hooks/useMdx'
+import { Link, LinkProps } from 'react-aria-components'
 import { Card } from '../ui/card'
-import { Link, LinkProps } from '../ui/link'
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableProps, TableRow } from '../ui/table'
+import { DocComposed } from './doc-composed'
 import { DocHow } from './doc-how'
+import { DocNote } from './doc-note'
+import { DocSnippet, DocSnippetProps } from './doc-snippet'
+import { InstallCommand, InstallCommandProps } from './install-command'
+
 
 interface MdxProps {
   code: string
@@ -39,7 +38,7 @@ export function MDXContent({ code }: MdxProps) {
         Image,
         How: DocHow,
         a: (props: LinkProps) => (
-          <Link target="_blank" intent="primary" {...props} className="not-prose xd2432 font-medium hover:underline" />
+          <Link target="_blank" {...props} className="not-prose xd2432 font-medium hover:underline" />
         ),
         SourceCode: SourceCode,
         PlainCode: PlainCode,

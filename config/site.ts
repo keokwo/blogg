@@ -1,17 +1,24 @@
 export const siteConfig = {
-    name: 'neoartd.my.id',
-    url: 'http://localhost:3003',
-    description: 'Personal Website',
-    author: 'Muhammad Muqoffin Nuha',
-    username: 'initheo',
-    links: {
-        twitter: 'https://twitter.com/irsyadadl',
-        github: 'https://github.com/irsyadadl',
-    },
-    email: {
-        first: 'ofinakli26@gmail.com',
-        second: 'muhammad.nuha23@student.uisi.ac.id',
-    }
-}
+  name: "Magic UI",
+  url: "https://magicui.design",
+  ogImage: "https://magicui.design/api/og",
+  description:
+    "Beautifully designed landing page components built with React & Tailwind CSS.",
+  links: {
+    twitter: "https://twitter.com/magicuidesign",
+    discord: "https://discord.gg/87p2vpsat5",
+    github: "https://github.com/magicuidesign/magicui",
+    instagram: "https://instagram.com/magicuidesign/",
+  },
+  keywords: [
+    "React",
+    "Tailwind CSS",
+    "Framer Motion",
+    "Landing Page",
+    "Components",
+    "Next.js",
+  ],
+  banner: true,
+};
 
-export type SiteConfig = typeof siteConfig
+export type SiteConfig = typeof siteConfig;

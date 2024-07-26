@@ -31,21 +31,23 @@ export default function QueryNotFound({
       <div className='flex w-full flex-col justify-center gap-3 lg:flex-row'>
         <Button
           onClick={onAskAiAssistant}
-          className='justify-center !bg-green-600'
+          variant={'green'}
+          className='justify-center p-2'
           data-umami-event='Click Ask AI Assistant'
         >
-          <AiIcon size={20} /> Ask AI Assistant
+          <AiIcon size={20} className="mr-2 h-4 w-4" /> Ask AI Assistant
         </Button>
         <Button
           onClick={onFindGoogle}
-          className='justify-center !bg-indigo-600'
+          variant={'indigo'}
+          className='justify-center p-2'
           data-umami-event='Click Find in Google'
         >
-          <GoogleIcon size={20} />
+          <GoogleIcon size={20} className="mr-2 h-4 w-4" />
           Find in Google
         </Button>
       </div>
-      <p className='text-sm text-neutral-500'>
+      <p className='text-sm p-2 text-neutral-500'>
         Press `ESC` to close this window
       </p>
     </div>

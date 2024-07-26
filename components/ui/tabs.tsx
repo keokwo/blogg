@@ -2,6 +2,7 @@
 
 import { useId } from 'react'
 
+import { cn } from '@/lib/utils'
 import { LayoutGroup, motion } from 'framer-motion'
 import {
   composeRenderProps,
@@ -16,8 +17,6 @@ import {
 } from 'react-aria-components'
 import { twJoin } from 'tailwind-merge'
 import { tv } from 'tailwind-variants'
-
-import { cn } from './primitive'
 
 const tabsStyles = tv({
   base: 'group flex gap-4',
