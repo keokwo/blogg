@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 
-import { Button } from '@/components/ui/button'
+import { Buttons } from '@/components/ui/buttons'
 import { CopyButton } from '@/components/ui/snippet'
 import { cn } from '@/lib/utils'
 import { IconCircleInfo } from '@irsyadadl/paranoid'
@@ -83,9 +83,9 @@ function CodeExpandButton({ isOpened }: { isOpened: boolean }) {
       )}
     >
       <CollapsibleTrigger asChild>
-        <Button>
+        <Buttons intent="secondary" size="small">
           {isOpened ? 'Collapse' : 'Expand'}
-        </Button>
+        </Buttons>
       </CollapsibleTrigger>
     </div>
   )

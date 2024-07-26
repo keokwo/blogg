@@ -18,6 +18,7 @@ import {
 import { twJoin } from 'tailwind-merge'
 import { tv } from 'tailwind-variants'
 
+
 const tabsStyles = tv({
   base: 'group flex gap-4',
   variants: {
@@ -68,7 +69,7 @@ function TabList<T extends object>(props: TabListProps<T>) {
 
 const tabStyles = tv({
   base: [
-    'relative flex cursor-default items-center rounded-full text-sm font-medium outline-none transition forced-color-adjust-none hover:text-fg [&>[data-slot=icon]]:size-4 [&>[data-slot=icon]]:mr-2',
+    'relative flex cursor-default items-center rounded-full text-sm font-medium outline-none transition forced-color-adjust-none hover:text-foreground [&>[data-slot=icon]]:size-4 [&>[data-slot=icon]]:mr-2',
     // hor
     'group-orientation-vertical:w-full group-orientation-vertical:py-0',
     // ver
@@ -76,12 +77,12 @@ const tabStyles = tv({
   ],
   variants: {
     isSelected: {
-      false: 'text-muted-fg',
-      true: 'text-fg forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]'
+      false: 'text-mute-foreground',
+      true: 'text-foreground forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]'
     },
-    isFocused: { false: 'ring-0', true: 'text-fg' },
+    isFocused: { false: 'ring-0', true: 'text-foreground' },
     isDisabled: {
-      true: 'text-muted-fg/50 forced-colors:text-[GrayText] forced-colors:selected:bg-[GrayText] forced-colors:selected:text-[HighlightText]'
+      true: 'text-muted-foreground/50 forced-colors:text-[GrayText] forced-colors:selected:bg-[GrayText] forced-colors:selected:text-[HighlightText]'
     }
   }
 })
@@ -103,7 +104,7 @@ function Tab({ children, ...props }: TabProps) {
           {isSelected && (
             <motion.span
               className={cn(
-                'absolute rounded bg-fg',
+                'absolute rounded bg-foreground',
                 // horizontal
                 'group-orientation-horizontal:inset-x-0 group-orientation-horizontal:-bottom-px group-orientation-horizontal:h-0.5 group-orientation-horizontal:w-full',
                 // vertical
@@ -120,7 +121,7 @@ function Tab({ children, ...props }: TabProps) {
 }
 
 const tabPanelStyles = tv({
-  base: 'flex-1 text-sm text-fg'
+  base: 'flex-1 text-sm text-foreground'
 })
 
 function TabPanel(props: TabPanelProps) {

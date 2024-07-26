@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import { fontFamily } from 'tailwindcss/defaultTheme'
 
 const config = {
   darkMode: ["class"],
@@ -18,15 +19,34 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', ...fontFamily.sans],
+        mono: ['var(--font-mono)', ...fontFamily.sans],
+        code: ['var(--firaCode-font)'],
+        emoji: ['Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
+        toggle: 'hsl(var(--toggle))',
+        link: 'hsl(var(--link))',
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          '50': '#eef8ff',
+          '100': '#d8eeff',
+          '200': '#b9e0ff',
+          '300': '#89cfff',
+          '400': '#52b4ff',
+          '500': '#2a91ff',
+          '600': '#0d6efd',
+          '700': '#0c5ae9',
+          '800': '#1149bc',
+          '900': '#144194',
+          '950': '#11295a'
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -75,15 +95,25 @@ const config = {
             "background-position": "calc(100% + var(--shimmer-width)) 0",
           },
         },
+        blink: {
+          '0%': { opacity: '0.2' },
+          '20%': { opacity: '1' },
+          '100% ': { opacity: '0.2' }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         shimmer: "shimmer 8s infinite",
+        blink: 'blink 1.4s both infinite',
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('@tailwindcss/typography'),
+    require('tailwindcss-react-aria-components')
+  ],
 } satisfies Config
 
 export default config

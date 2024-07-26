@@ -5,7 +5,6 @@ import {
   Button,
   Cell,
   type CellProps,
-  Checkbox,
   Collection,
   Column,
   type ColumnProps,
@@ -22,13 +21,14 @@ import {
 import { tv } from 'tailwind-variants'
 
 import { cn } from '@/lib/utils'
+import { Checkbox } from './checkbox'
 
 const table = tv({
   slots: {
     root: 'table w-full caption-bottom border-spacing-0 text-sm outline-none',
     column: 'whitespace-nowrap px-4 py-3 text-left font-medium outline-none [&:has([slot=selection])]:pr-0',
     header: 'border-b',
-    row: 'tr group relative cursor-default border-b text-fg/70 outline-none ring-primary focus-visible:ring-1 selected:bg-primary/15',
+    row: 'tr group relative cursor-default border-b text-foreground/70 outline-none ring-primary focus-visible:ring-1 selected:bg-primary/15',
     cell: 'whitespace-nowrap px-4 py-3 outline-none'
   }
 })
@@ -114,7 +114,7 @@ const TableRow = <T extends object>({
       {allowsDragging && (
         <Cell className="ring-primary">
           <Button
-            className="cursor-pointer bg-transparent p-1.5 text-muted-fg pressed:cursor-grab pressed:text-fg"
+            className="cursor-pointer bg-transparent p-1.5 text-muted-foreground pressed:cursor-grab pressed:text-foreground"
             slot="drag"
           >
             <IconDotGrid2X3 className="size-5" />

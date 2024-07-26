@@ -66,4 +66,58 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  
+    /* Firefox */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #d4d4d8 transparent;
+    }
+
+    /* dark mode */
+    .dark {
+        scrollbar-width: thin;
+        scrollbar-color: #3f3f46 transparent;
+
+        @media (prefers-color-scheme: dark) {
+            * {
+                scrollbar-width: thin;
+                scrollbar-color: #3f3f46 transparent;
+            }
+        }
+    }
+
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 5px;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        @apply bg-muted;
+        border-radius: 14px;
+        border: 3px solid transparent;
+    }
+}
+
+.react-aria-Button,
+.react-aria-Dialog,
+.react-aria-Link {
+    outline: none;
+}
+
+@layer components {
+    .no-scrollbar {
+        -ms-overflow-style: none; /* Internet Explorer and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
 }

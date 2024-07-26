@@ -8,7 +8,7 @@ import { toast } from 'sonner'
 import { twMerge } from 'tailwind-merge'
 
 import { cn } from '@/lib/utils'
-import { Button, type ButtonProps } from './button'
+import { Buttons, type ButtonProps } from './buttons'
 
 const snippetVariants = {
   hidden: { opacity: 0, scale: 0.5 },
@@ -40,14 +40,17 @@ const Snippet: React.FC<SnippetProps> = ({ className, text, ...props }) => {
     <div
       {...props}
       className={twMerge(
-        'relative flex items-center justify-between rounded-lg border bg-[#0e0e10] text-white py-2.5 pl-3 pr-2.5 font-mono text-sm [&>svg:hover]:text-white [&>svg]:text-muted-fg [&>svg]:transition [&_svg]:shrink-0',
+        'relative flex items-center justify-between rounded-lg border bg-[#0e0e10] text-white py-2.5 pl-3 pr-2.5 font-mono text-sm [&>svg:hover]:text-white [&>svg]:text-muted-foreground [&>svg]:transition [&_svg]:shrink-0',
         className
       )}
     >
       <span className="mr-6">{text}</span>
-      <Button
+      <Buttons
         className="size-7 bx backdrop-blur-lg text-white bg-zinc-800 border hover:bg-zinc-700 border-zinc-700"
         aria-label="Copy imports statement"
+        size="square-petite"
+        appearance="outline"
+        onPress={handleCopy}
       >
         <AnimatePresence mode="wait" initial={false}>
           {copied ? (
@@ -60,7 +63,7 @@ const Snippet: React.FC<SnippetProps> = ({ className, text, ...props }) => {
             </motion.span>
           )}
         </AnimatePresence>
-      </Button>
+      </Buttons>
     </div>
   )
 }
@@ -82,12 +85,14 @@ const CopyButton = ({
   ...props
 }: CopyButtonProps) => {
   return (
-    <Button
+    <Buttons
       className={cn(
         'size-7 backdrop-blur-lg text-white bg-zinc-800 border hover:bg-zinc-700 border-zinc-700',
         className
       )}
       aria-label={ariaLabel}
+      size="square-petite"
+      appearance="outline"
       {...props}
     >
       <AnimatePresence mode="wait" initial={false}>
@@ -107,7 +112,7 @@ const CopyButton = ({
           </motion.span>
         )}
       </AnimatePresence>
-    </Button>
+    </Buttons>
   )
 }
 

@@ -47,8 +47,8 @@ const SiteProfile = ({ isScrolled = false }: ProfileProps) => {
         <MenuContext.Provider value={{ hideNavbar }}>
             <div
                 className={clsx(
-                    ' p-5 z-40 w-full gap-5 items-center sm:shadow-none xl:p-0 shadow-lg dark:border-b dark:border-neutral-800 supports-backdrop-blur:bg-background/90 bg-background/40 backdrop-blur-lg',
-                    expandMenu && 'fixed pb-0 top-0 dark:bg-black bg-white',
+                    ' p-5 z-40 w-full gap-5 items-center sm:shadow-none xl:p-0 shadow-lg dark:border-b dark:border-neutral-800',
+                    expandMenu && 'fixed pb-0 top-0 bg-background',
                 )}
             >
                 <div className='flex items-start justify-between xl:flex-col xl:space-y-9'>

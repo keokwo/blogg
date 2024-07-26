@@ -7,12 +7,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import AOS from 'aos';
 import { ThemeProvider } from "next-themes";
-import { Inter } from "next/font/google";
 import localFont from 'next/font/local';
 import { useEffect } from "react";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 const satoshi = localFont({
   src: './fonts/Satoshi-Variable.woff2',
@@ -40,7 +37,7 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "relative flex min-h-screen w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased",
+          "relative flex min-h-screen w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background antialiased",
           geistMono.variable,
         )}
       >

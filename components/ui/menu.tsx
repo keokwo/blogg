@@ -2,7 +2,6 @@
 
 import * as React from 'react'
 
-import { cn } from '@/lib/utils'
 import { IconBulletFill, IconCheck, IconChevronLgRight } from '@irsyadadl/paranoid'
 import type {
   ButtonProps,
@@ -29,6 +28,8 @@ import {
 } from 'react-aria-components'
 import { twJoin } from 'tailwind-merge'
 import type { VariantProps } from 'tailwind-variants'
+
+import { cn } from '@/lib/utils'
 import { dropdownItemStyles } from './dropdown'
 
 const Menu = MenuTriggerPrimitive
@@ -68,7 +69,7 @@ const MenuContent = <T extends object>({
     <Popover
       offset={currentOffset}
       className={cn(
-        'z-50 min-w-40 rounded-xl border bg-popover text-popover-fg outline-none entering:animate-in exiting:animate-out entering:fade-in-0 exiting:fade-out-0 exiting:zoom-out-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2',
+        'z-50 min-w-40 rounded-xl border bg-popover text-popover-foreground outline-none entering:animate-in exiting:animate-out entering:fade-in-0 exiting:fade-out-0 exiting:zoom-out-95 data-[placement=bottom]:slide-in-from-top-2 data-[placement=left]:slide-in-from-right-2 data-[placement=right]:slide-in-from-left-2 data-[placement=top]:slide-in-from-bottom-2',
         popoverClassName
       )}
       {...props}
@@ -156,8 +157,8 @@ const MenuKeyboard = ({ keys, className, ...props }: MenuKeyboardProps) => {
         <kbd
           key={index}
           className={twJoin([
-            'text-center font-sans capitalize text-muted-fg group-focus:text-fg forced-colors:group-focus:text-[HighlightText]',
-            'inline-grid min-h-5 min-w-5 place-content-center rounded bg-background font-sans text-[.75rem] uppercase text-fg ring-1 ring-fg/10 group-focus:opacity-60',
+            'text-center font-sans capitalize text-muted-foreground group-focus:text-foreground forced-colors:group-focus:text-[HighlightText]',
+            'inline-grid min-h-5 min-w-5 place-content-center rounded bg-background font-sans text-[.75rem] uppercase text-foreground ring-1 ring-foreground/10 group-focus:opacity-60',
             index > 0 && char.length > 1 && 'pl-1'
           ])}
         >

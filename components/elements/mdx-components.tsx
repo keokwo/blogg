@@ -1,10 +1,11 @@
+"use client"
 import { PlainCode } from '@/components/docs/rehype/plain-code'
 import { SourceCode } from '@/components/docs/rehype/source-code'
 import Image from 'next/image'
 
 import { useMDXComponent } from '@/lib/hooks/useMdx'
-import { Link, LinkProps } from 'react-aria-components'
 import { Card } from '../ui/card'
+import { Link, LinkProps } from '../ui/link'
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableProps, TableRow } from '../ui/table'
 import { DocComposed } from './doc-composed'
 import { DocHow } from './doc-how'
